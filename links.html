@@ -281,7 +281,36 @@ background-color: Transparent;
 border: 1px solid #FFFFFF;
 " class="btn links-page-blc__btn">Отправить запрос</button>
 							</form>
+							<div id="leadSent" class="links-page-blc__txt"></div>
 						</div>
+
+
+
+						<div class="links-page-btn-pic">
+							<center><img src="https://scontent-arn2-1.cdninstagram.com/v/t51.2885-15/e35/73252296_546703699456768_1838323999341685285_n.jpg?_nc_ht=scontent-arn2-1.cdninstagram.com&_nc_cat=104&oh=bdc41911e3d8f5c60423bc5e03530b61&oe=5E742FDD" alt="">
+							</img></center>
+						</div>
+
+
+
+
+
+						<a href="https://shor.by/mihailschwarz" class="links-page-btn " style="
+border: 1px solid #FFFFFF;
+background-color: Transparent;
+--elems-color: ;
+--elems-hover: ;
+color: #FFFFFF;
+" 
+						target="_blank"
+>
+
+							<strong>
+								Сайт
+							</strong>
+						</a>
+
+
 					</div>
 
 					<div class="links-page-soc">
@@ -336,6 +365,17 @@ $(document).ready(function(){
                 contentType: 'application/json',
 		data : form_data
 	}).done(function(response){
+	    var email = response.email;
+		if (email) {
+	        $("#leadSent").text("Ваш запрос отправлен на " + email);
+		} else {
+	        $("#leadSent").text("Ваш запрос отправлен");
+		}
+
+		var input = form.find('input');
+		input.attr('readonly', true);
+        input.attr("disabled", true);
+		form.find('button').attr("disabled", true);
 	}).fail(function(){
 	});
 
